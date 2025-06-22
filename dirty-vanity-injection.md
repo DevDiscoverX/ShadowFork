@@ -2,7 +2,7 @@
 
 **Dirty Vanity** is a novel code injection technique that allows attackers to stealthily execute malicious payloads in Windows by evading Endpoint Detection & Response (EDR) systems.
 
----
+
 
 ## 🚨 What is Dirty Vanity?
 
