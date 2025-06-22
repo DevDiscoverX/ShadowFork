@@ -8,13 +8,11 @@
 
 Dirty Vanity splits traditional code injection steps between two processes, using Windows process forking to confuse EDRs and execute malicious code in a cloned process—without alerting security tools.
 
----
 
 ## 🤔 What is EDR?
 
 **EDR (Endpoint Detection & Response)** is a system that monitors a machine for suspicious activity, especially behaviors like memory allocation, code writing, and code execution within trusted processes.
 
----
 
 ## 🧪 Traditional Injection vs. Dirty Vanity
 
@@ -31,7 +29,6 @@ Dirty Vanity splits traditional code injection steps between two processes, usin
 ✅ Original process remains untouched  
 ❌ EDR doesn’t see the code execution path
 
----
 
 ## 🛡️ Why is it Dangerous?
 
@@ -45,7 +42,7 @@ As a result:
 - ✅ Original process looks clean
 - ❌ EDR doesn’t raise an alert
 
----
+
 
 ## 🏗️ Real-World Example
 
@@ -53,7 +50,6 @@ As a result:
 - **Traditional Way:** Touching `lsass.exe` alerts EDR.
 - **Dirty Vanity:** Clone `lsass.exe`, dump credentials from the **clone**—EDR doesn’t detect the operation.
 
----
 
 ## ⚙️ Requirements to Run Dirty Vanity
 
@@ -61,7 +57,6 @@ As a result:
 - Permission to fork a process (`RtlCreateProcessReflection`)
 - Basic C/C++ and Windows internals knowledge
 
----
 
 ## 🔍 Detection & Future Mitigation
 
@@ -70,7 +65,6 @@ Currently, most EDRs are blind to this. Future improvements might include:
 - Linking parent-write events with clone-execution events
 - Monitoring memory in forked processes
 
----
 
 ## 🧪 Dirty Vanity Lab Setup Guide
 
@@ -88,7 +82,6 @@ Currently, most EDRs are blind to this. Future improvements might include:
 | Process Hacker / Process Explorer | Observe forks and memory              |
 | Windows SDK / Sysinternals Suite  | Inspect system behavior               |
 
----
 
 ## 📦 Download the Dirty Vanity Code
 
@@ -97,7 +90,6 @@ git clone https://github.com/deepinstinct/Dirty-Vanity.git
 ```
 
 ---
-
 
 ## 🧱 Lab Setup Steps
 
@@ -126,7 +118,6 @@ Or use a template:
 
 🔗 [windows_x64_shellcode_template](https://github.com/rainerzufalldererste/windows_x64_shellcode_template)
 
----
 
 ## 🔎 Observation Tools
 
@@ -137,7 +128,6 @@ Or use a template:
 | Process Hacker | Process tree showing forks            |
 | Event Viewer   | Suspicious process activity           |
 
----
 
 ## 🧪 Test Scenario (Step-by-Step)
 
@@ -148,7 +138,6 @@ Or use a template:
    - Code execution inside the fork
 4. Optional: Set breakpoints in x64dbg to trace execution
 
----
 
 ## 🔒 Safety Tips
 
@@ -157,13 +146,11 @@ Or use a template:
 - Monitor all behavior with **ProcMon**
 - **Never** test on a host/work machine
 
----
 
 ## 📌 In One Sentence
 
 > Dirty Vanity is a stealthy process injection technique that bypasses EDR by running malicious code in a **forked clone** of a process, instead of the original target.
 
----
 
 ## 🔗 References
 
