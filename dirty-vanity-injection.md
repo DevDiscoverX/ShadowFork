@@ -94,6 +94,9 @@ Currently, most EDRs are blind to this. Future improvements might include:
 
 ```bash
 git clone https://github.com/deepinstinct/Dirty-Vanity.git
+```
+
+---
 
 
 ## 🧱 Lab Setup Steps
