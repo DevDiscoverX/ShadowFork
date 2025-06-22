@@ -94,3 +94,75 @@ Currently, most EDRs are blind to this. Future improvements might include:
 
 ```bash
 git clone https://github.com/deepinstinct/Dirty-Vanity.git
+
+
+## 🧱 Lab Setup Steps
+
+### 1. Set Up Victim Process
+
+Use a known process like:
+- `notepad.exe`
+- `explorer.exe`
+- or a custom dummy process
+
+### 2. Compile Injector
+
+- Open `DirtyVanity.cpp` in Visual Studio
+- Link against `ntdll.lib`
+- Use x64 Debug/Release mode
+
+### 3. Choose Your Shellcode
+
+Start simple:
+
+```cpp
+MessageBoxA(NULL, "Dirty Vanity Lab", "Test", MB_OK);
+```
+
+Or use a template:
+
+🔗 [windows_x64_shellcode_template](https://github.com/rainerzufalldererste/windows_x64_shellcode_template)
+
+---
+
+## 🔎 Observation Tools
+
+| Tool           |         Watch For                     |
+|----------------|---------------------------------------|
+| x64dbg         | Shellcode execution in forked process |
+| ProcMon        | Memory & process activity             |
+| Process Hacker | Process tree showing forks            |
+| Event Viewer   | Suspicious process activity           |
+
+---
+
+## 🧪 Test Scenario (Step-by-Step)
+
+1. Launch `notepad.exe`
+2. Run the compiled Dirty Vanity injector
+3. In **Process Hacker**, observe:
+   - A forked version of `notepad`
+   - Code execution inside the fork
+4. Optional: Set breakpoints in x64dbg to trace execution
+
+---
+
+## 🔒 Safety Tips
+
+- Take VM **snapshots** before testing
+- Disable **internet access** on VMs
+- Monitor all behavior with **ProcMon**
+- **Never** test on a host/work machine
+
+---
+
+## 📌 In One Sentence
+
+> Dirty Vanity is a stealthy process injection technique that bypasses EDR by running malicious code in a **forked clone** of a process, instead of the original target.
+
+---
+
+## 🔗 References
+
+- Official GitHub Repo: [deepinstinct/Dirty-Vanity](https://github.com/deepinstinct/Dirty-Vanity)
+- Shellcode Template: [windows_x64_shellcode_template](https://github.com/rainerzufalldererste/windows_x64_shellcode_template)
